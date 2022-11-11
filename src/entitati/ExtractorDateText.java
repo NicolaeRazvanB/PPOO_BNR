@@ -79,13 +79,17 @@ public class ExtractorDateText {
                     else throw new ExceptieFormatFisierExtras();
                     if (data.startsWith("{")) {
                         extras = data.substring(1, data.length() - 1);
-                        perechi = extras.split(",");
-                        for (String s : perechi) {
-                            pereche = s;
-                            cheieValoare = pereche.split("=");
-                            dateTime = LocalDateTime.parse(cheieValoare[0].trim(), formatter);
-                            myMap.put(dateTime, Float.valueOf(cheieValoare[1].trim()));
+
+                        if (!extras.equals("")) {
+                            perechi = extras.split(",");
+                            for (String s : perechi) {
+                                pereche = s;
+                                cheieValoare = pereche.split("=");
+                                dateTime = LocalDateTime.parse(cheieValoare[0].trim(), formatter);
+                                myMap.put(dateTime, Float.valueOf(cheieValoare[1].trim()));
+                            }
                         }
+
                         if (myReader.hasNextLine()) {
                             data = myReader.nextLine();
                             if (data.startsWith("Nume")) {

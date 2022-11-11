@@ -28,6 +28,8 @@ public class Client {
     public Client(String nume, String parola) {
         this.nume = nume;
         this.parola = parola;
+        Card card = new Card();
+        this.listaCarduri.add(card);
     }
 
     public String getNume() {
